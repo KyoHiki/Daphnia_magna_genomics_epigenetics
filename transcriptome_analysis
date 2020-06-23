@@ -1,0 +1,46 @@
+# 1. Preparation of analysis
+### Install several softwares through conda
+```
+conda install bioconda::seqkit
+conda install bioconda::csvtk
+conda install bioconda::samtools
+conda create -n hisat2 bioconda::hisat2
+conda create -n htseq bioconda::htseq
+conda create -n multiqc bioconda::multiqc python=2.7
+```
+<br/>
+  
+> seqkit 0.12.1  
+> samtools-1.9  
+> csvtk 0.20.0  
+> hisat2 2.1.0  
+> HTSeq 0.11.3  
+  
+<br/>
+<br/>
+<br/>
+  
+### Download the reference genome
+#### xinb3 strain (assembly GCA_001632505.1)
+```
+wget https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/001/632/505/GCA_001632505.1_daphmag2.4/GCA_001632505.1_daphmag2.4_genomic.fna.gz 
+wget https://ftp.ncbi.nlm.nih.gov/genomes/all/GCA/001/632/505/GCA_001632505.1_daphmag2.4/GCA_001632505.1_daphmag2.4_genomic.gtf.gz 
+```
+#### open gz files
+```
+gunzip GCA_001632505.1_daphmag2.4_genomic.fna.gz 
+gunzip GCA_001632505.1_daphmag2.4_genomic.gtf.gz 
+```
+<br/>
+<br/>
+<br/>
+
+
+# 2. Check original RNA-Seq data
+### Check quality of fastq files
+#### A total of 118 pairs were checked
+```seqkit stats -a *.fastq.gz -T | csvtk pretty -t```
+
+<br/>
+<br/>
+<br/>
